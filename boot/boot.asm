@@ -8,6 +8,9 @@ main:
 	call print
 	call print_nl
 	
+	mov dx, 0xFAC3
+	call print_hex
+	
 	jmp $
 	
 %include "boot/print.asm"
