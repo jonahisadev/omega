@@ -33,3 +33,12 @@ void screen_write(char* str) {
 void screen_setColor(u16 color) {
 	screen_color = color;
 }
+
+void screen_scroll() {
+	for (int y = 0; y < VGA_HEIGHT-1; y++) {
+		for (int x = 0; x < VGA_WIDTH; x++) {
+			screen_vidmem[y * VGA_WIDTH + x] = screen_vidmem[(y * VGA_WIDTH + x) + 80];
+		}
+	}
+	screen_y--;
+}

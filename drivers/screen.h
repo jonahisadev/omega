@@ -16,5 +16,6 @@ void screen_clear();
 void screen_putc(char c);
 void screen_write(char* str);
 void screen_setColor(u16 color);
+void screen_scroll();
 
 #endif // SCREEN_H

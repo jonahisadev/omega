@@ -2,8 +2,13 @@
 #include "../drivers/screen.h"
 
 void kmain() {
-	screen_setColor((u16)0x1F);
 	screen_clear();
-	screen_write("Hello world!\n");
-	screen_write("Isn't this cool?");
+	
+	screen_write("Line 1\n");
+	screen_write("Line 2\n");
+	screen_write("Line 3\n");
+	
+	screen_scroll();
+	
+	screen_write("Line 4\n");
 }
