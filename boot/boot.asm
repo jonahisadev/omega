@@ -1,14 +1,21 @@
 [ORG 0x7C00]
 
+KERNEL_ENTRY equ 0x1000
+
 main:
 	mov [BOOT_DRIVE], dl
 
 	mov bp, 0x8000
 	mov sp, bp
 	
-	mov bx, HELLO
+	mov bx, LOADING
 	call print
 	call print_nl
+	
+	mov dh, 15
+	mov bx, KERNEL_ENTRY
+	mov dl, [BOOT_DRIVE]
+	call disk_load
 	
 	call switch_mode
 	
@@ -20,17 +27,11 @@ main:
 %include "boot/switch.asm"
 
 BEGIN_32:
-	mov ebx, HELLO32
-	call print32
-	
+	call KERNEL_ENTRY
 	jmp $
 
-HELLO: db "Hello BIOS!",0
+LOADING: db "Loading kernel...",0
 BOOT_DRIVE: db 0
-HELLO32: db "Hello 32-bit!",0
 
 times 510 - ($ - $$) db 0
 dw 0xAA55
-
-times 256 dw 0xACDC
-times 256 dw 0xFACE

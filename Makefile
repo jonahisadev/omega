@@ -19,7 +19,7 @@ kernel.bin: kernel/entry.o ${OBJ}
 %.o: %.asm
 	nasm $< -f elf -o $@
 
-boot: boot/boot.asm
+boot.bin: boot/boot.asm
 	nasm $< -f bin -o boot.bin
 
 clean:
