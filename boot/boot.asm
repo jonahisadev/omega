@@ -16,7 +16,6 @@ main:
 	
 %include "boot/print.asm"
 %include "boot/disk.asm"
-<<<<<<< HEAD
 %include "boot/gdt.asm"
 %include "boot/switch.asm"
 
