@@ -1,7 +1,9 @@
 #include "common.h"
-
-volatile u16* vidmem = (u16*) 0xB8000;
+#include "../drivers/screen.h"
 
 void kmain() {
-	vidmem[0] = ((u16)0x0F << 8) | 'A';
+	screen_setColor((u16)0x1F);
+	screen_clear();
+	screen_write("Hello world!\n");
+	screen_write("Isn't this cool?");
 }

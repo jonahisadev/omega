@@ -1,5 +1,5 @@
-C_SOURCES = $(wildcard kernel/*.c)
-HEADERS = $(wildcard kernel/*.h)
+C_SOURCES = $(wildcard kernel/*.c drivers/*.c)
+HEADERS = $(wildcard kernel/*.h drivers/*.h)
 OBJ = ${C_SOURCES:.c=.o} 
 
 CC = i386-elf-gcc
@@ -23,4 +23,4 @@ boot.bin: boot/boot.asm
 	nasm $< -f bin -o boot.bin
 
 clean:
-	rm -rf *.bin *.o os-image kernel/*.o
+	rm -rf *.bin *.o os-image kernel/*.o drivers/*.o
