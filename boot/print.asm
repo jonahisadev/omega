@@ -1,3 +1,4 @@
+[BITS 16]
 print:
 	pusha
 	mov ah, 0x0E
@@ -55,3 +56,23 @@ print_hex:
 	ret
 	
 HEX_OUT: db "0x0000",0
+	
+[BITS 32]
+VIDEO_MEMORY equ 0xB8000
+print32:
+	pusha
+	mov edx, VIDEO_MEMORY
+
+.loop:
+	mov al, [ebx]
+	mov ah, 0x0F
+	cmp al, 0
+	jz .done
+	mov [edx], ax
+	add edx, 2
+	inc ebx
+	jmp .loop
+	
+.done:
+	popa
+	ret
