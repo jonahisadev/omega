@@ -16,6 +16,7 @@ main:
 	
 %include "boot/print.asm"
 %include "boot/disk.asm"
+<<<<<<< HEAD
 %include "boot/gdt.asm"
 %include "boot/switch.asm"
 
@@ -31,3 +32,6 @@ HELLO32: db "Hello 32-bit!",0
 
 times 510 - ($ - $$) db 0
 dw 0xAA55
+
+times 256 dw 0xACDC
+times 256 dw 0xFACE
