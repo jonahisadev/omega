@@ -4,11 +4,6 @@
 void kmain() {
 	screen_clear();
 	
-	screen_write("Line 1\n");
-	screen_write("Line 2\n");
-	screen_write("Line 3\n");
-	
-	screen_scroll();
-	
-	screen_write("Line 4\n");
+	screen_write("This is a number I used to write more often: ");
+	screen_writeNum(1209);
 }

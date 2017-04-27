@@ -8,4 +8,7 @@ typedef 		 short		i16;
 typedef unsigned char 		u8;
 typedef 		 char		i8;
 
+#define FALSE 0
+#define TRUE 1
+
 #endif // COMMON_H
