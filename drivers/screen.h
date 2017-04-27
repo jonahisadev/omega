@@ -15,13 +15,11 @@ const static u16 VGA_HEIGHT = 25;
 static volatile u16* screen_vidmem = (u16*) 0xB8000;
 
 void screen_clear();
+void screen_moveCursor();
 void screen_putc(char c);
 void screen_write(char* str);
 void screen_writeNum(u32 num);
-<<<<<<< HEAD
 void screen_writeHexPlace(u32 hex, u32 max);
-=======
->>>>>>> 8c4574339de01b2bfb86612927423bc7503f11bb
 void screen_writeHex(u32 hex);
 void screen_setColor(u16 color);
 void screen_scroll();
@@ -39,6 +37,15 @@ void screen_clear() {
 	
 	screen_x = 0;
 	screen_y = 0;
+	screen_moveCursor();
+}
+
+void screen_moveCursor() {
+	u16 cursor_loc = screen_y * 80 + screen_x;
+	asm_outb(0x3D4, 14);
+	asm_outb(0x3D5, cursor_loc >> 8);
+	asm_outb(0x3D4, 15);
+	asm_outb(0x3D5, cursor_loc);
 }
 
 void screen_putc(char c) {
@@ -53,6 +60,7 @@ void screen_putc(char c) {
 			screen_y++;
 		}
 	}
+	screen_moveCursor();
 }
 
 void screen_write(char* str) {
