@@ -4,11 +4,11 @@
 void kmain() {
 	screen_clear();
 	
-	screen_write("Line 1\n");
-	screen_write("Line 2\n");
-	screen_write("Line 3\n");
+	u8 num = 42;
 	
-	screen_scroll();
-	
-	screen_write("Line 4\n");
+	screen_write("Omega OS v0.1\n");
+	screen_write("Here's a cool number: ");
+	screen_writeNum(num);
+	screen_write("\nHere's a pointer to that number: ");
+	screen_writeHex((u32)&num);
 }

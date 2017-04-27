@@ -1,5 +1,5 @@
 C_SOURCES = $(wildcard kernel/*.c drivers/*.c)
-HEADERS = $(wildcard kernel/*.h drivers/*.h)
+HEADERS = $(wildcard kernel/*.h drivers/*.h kernel/runtime/*.h)
 OBJ = ${C_SOURCES:.c=.o} 
 
 CC = i386-elf-gcc
