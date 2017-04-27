@@ -18,7 +18,10 @@ void screen_clear();
 void screen_putc(char c);
 void screen_write(char* str);
 void screen_writeNum(u32 num);
+<<<<<<< HEAD
 void screen_writeHexPlace(u32 hex, u32 max);
+=======
+>>>>>>> 8c4574339de01b2bfb86612927423bc7503f11bb
 void screen_writeHex(u32 hex);
 void screen_setColor(u16 color);
 void screen_scroll();
