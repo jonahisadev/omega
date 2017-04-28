@@ -1,8 +1,12 @@
 #include "common.h"
 #include "../drivers/screen.h"
 #include "runtime/mem.h"
+#include "cpu/idt.h"
+#include "cpu/isr.h"
 
 void kmain() {
+	isr_install();
+	
 	screen_clear();
 	
 	u8 num = 42;
@@ -28,4 +32,6 @@ void kmain() {
 			screen_write(", ");
 	}
 	screen_write("\n");
+	
+	__asm__ __volatile__("int $8");
 }
