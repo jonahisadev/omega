@@ -96,6 +96,10 @@ void screen_writeNum(u32 num) {
 		}
 		screen_putc((char)count + 0x30);
 		x--;
+		if (x == 0) {
+			if (val == 0)
+				screen_putc('0');
+		}
 		if (val == 0)
 			done = TRUE;
 	}
