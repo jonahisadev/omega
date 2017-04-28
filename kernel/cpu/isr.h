@@ -91,9 +91,9 @@ void isr_install() {
 
 void isr_handler(registers_t r) {
 	screen_write("Received interrupt: ");
-	screen_writeNum(r.int_no);
+	screen_writeHexPlace(r.int_no, 2);
 	screen_putc('\n');
-	__asm__ __volatile__("hlt");
+	asm volatile("hlt");
 }
 
 #endif // ISR_H

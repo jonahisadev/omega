@@ -52,6 +52,8 @@ void screen_putc(char c) {
 	if (c == '\n') {
 		screen_x = 0;
 		screen_y++;
+		if (screen_y >= VGA_HEIGHT)
+			screen_scroll();
 	} else {
 		screen_vidmem[screen_y * VGA_WIDTH + screen_x++] = (screen_color << 8) | c;
 		
@@ -59,6 +61,8 @@ void screen_putc(char c) {
 			screen_x = 0;
 			screen_y++;
 		}
+		if (screen_y >= VGA_HEIGHT)
+			screen_scroll();
 	}
 	screen_moveCursor();
 }

@@ -1,4 +1,7 @@
+global _start
 [BITS 32]
-[EXTERN kmain]
-call kmain
-jmp $
+
+_start:
+	[EXTERN kmain]
+	call kmain
+	jmp $

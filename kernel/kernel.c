@@ -5,33 +5,17 @@
 #include "cpu/isr.h"
 
 void kmain() {
+	screen_clear();
+	screen_write("Loading...\n");
+	
 	isr_install();
 	
 	screen_clear();
-	
-	u8 num = 42;
-	
 	screen_setColor(0x0A);
 	screen_write("Omega OS v0.1\n\n");
 	screen_setColor(0x0F);
 	
-	screen_write("Here's a cool number: ");
-	screen_writeNum(num);
-	screen_write("\nHere's a pointer to that number: ");
-	screen_writeHex((u32)&num);
+	screen_write("Hello World!\n");
 	
-	u32* list = (u32*) kmalloc(sizeof(u32) * 5);
-	for (int i = 0; i < 5; i++) {
-		list[i] = (i + 1) * 5;
-	}
-	
-	screen_write("\nCrappy memory managed list: ");
-	for (int i = 0; i < 5; i++) {
-		screen_writeNum(list[i]);
-		if (i != 4)
-			screen_write(", ");
-	}
-	screen_write("\n");
-	
-	__asm__ __volatile__("int $8");
+	asm volatile("int $8");
 }
